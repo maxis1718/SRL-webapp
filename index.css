@@ -1,3 +1,14 @@
+.annot {
+	font-family: monospace;
+	font-size: 14px;
+	padding: 5px;
+}
+
+#annotated { background: honeydew; }
+#unannotated { background: aliceblue; }
+
+form { margin-bottom: 24px; }
+
 body { font-family: Georgia; position: absolute; left: 20px; top: 20px; }
 #hint {font-size: 12px; font-family: Monaco; margin-top: 5px;}
 span { background: cornsilk; padding: 1px 10px; }
