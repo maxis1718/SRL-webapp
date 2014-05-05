@@ -5,10 +5,16 @@ import cgitb; cgitb.enable()
 
 print "Content-type: text/html\n\n"
 
+PORT = 9901
+
 if __name__ == '__main__':
 	import socket
 	import sys
 
+	if len(sys.argv) == 2:
+		PORT = int(sys.argv[2].strip())
+	else:
+		PORT = 9901
 
 	print '<!DOCTYPE><html>'
 	print '<head>'
@@ -26,7 +32,7 @@ if __name__ == '__main__':
 
 
 	form = cgi.FieldStorage()
-	HOST, PORT = "localhost", 9999
+	HOST = "localhost"
 	data = form.getvalue('tree')
 
 	# Create a socket (SOCK_STREAM means a TCP socket)
