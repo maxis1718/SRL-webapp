@@ -5,7 +5,7 @@ import cgitb; cgitb.enable()
 
 print "Content-type: text/html\n\n"
 
-PORT = 9901
+PORT = 9999
 
 if __name__ == '__main__':
 	import socket
@@ -14,7 +14,7 @@ if __name__ == '__main__':
 	if len(sys.argv) == 2:
 		PORT = int(sys.argv[2].strip())
 	else:
-		PORT = 9901
+		PORT = 9999
 
 	print '<!DOCTYPE><html>'
 	print '<head>'

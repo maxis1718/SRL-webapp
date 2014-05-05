@@ -10,14 +10,17 @@ class MyTCPHandler(SocketServer.BaseRequestHandler):
     client.
     """
     print "Loading..."
-    e_hownet=EHowNetTree("ehownet_ontology.txt")
+
+    e_hownet = EHowNetTree("ehownet_ontology.txt")
     (feature_role_dict_10,feature_role_dict_9,feature_role_dict_8,feature_role_dict_7,feature_role_dict_6,feature_role_dict_5,feature_role_dict_4,feature_role_dict_3,feature_role_dict_2,feature_role_dict_1,legal_roles) = read_model()
     target_pos = get_target_pos()
     pp = get_pp()
     word2semType_dict = word2semType()
-    prep_pos = open('./data/tpos.txt').readlines()[2].rstrip().split(',') 
+    prep_pos = open('./data/tpos.txt').readlines()[2].rstrip().split(',')
     dummy = 0
+
     print "Ready!"
+
     def handle(self):
         # self.request is the TCP socket connected to the client
         self.data = self.request.recv(1024).strip()
@@ -26,6 +29,7 @@ class MyTCPHandler(SocketServer.BaseRequestHandler):
         # just send back the same data, but upper-cased
         self.request.sendall(annotated_tree)
         #print "Successfully served the request!"
+
     def srl(self,data):
       clean_expr = data
       #tree = parseExpr_unannotated(clean_expr.encode('utf_8'))
@@ -36,10 +40,11 @@ class MyTCPHandler(SocketServer.BaseRequestHandler):
       return ''.join(annotated_tree_line)
 
 if __name__ == "__main__":
+
     HOST = "localhost"
     PORT = 9999 if len(sys.argv) == 1 else int(sys.argv[1].strip())
     
-    # Create the server, binding to localhost on port 12001
+    # Create the server, binding to localhost on port 9999
     server = SocketServer.TCPServer((HOST, PORT), MyTCPHandler)
 	
 	
