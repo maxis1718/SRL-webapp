@@ -1,0 +1,44 @@
+<VirtualHost *:80>
+        ServerAdmin virk@doraemon.iis.sinica.edu.tw
+	ServerName doraemon.iis.sinica.edu.tw
+	DocumentRoot /home/virk/projects/SRL-webapp
+        <Directory />
+                Options FollowSymLinks
+                AllowOverride None
+        </Directory>
+
+        <Directory "/home/virk/projects/SRL-webapp" >
+                Options Indexes FollowSymLinks MultiViews
+                AllowOverride None
+                Order allow,deny
+                allow from all
+        </Directory>
+
+        ScriptAlias /cgi-bin/ /home/virk/projects/SRL-webapp
+        <Directory "/home/virk/projects/SRL-webapp">
+                AllowOverride None
+                Options +ExecCGI -MultiViews +SymLinksIfOwnerMatch
+                Order allow,deny
+                Allow from all
+		AddHandler cgi-script .py
+		AddHandler default-handler .html .htm
+        </Directory>
+
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+
+        # Possible values include: debug, info, notice, warn, error, crit,
+        # alert, emerg.
+        LogLevel warn
+
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+    Alias /doc/ "/usr/share/doc/"
+    <Directory "/usr/share/doc/">
+        Options Indexes MultiViews FollowSymLinks
+        AllowOverride None
+        Order deny,allow
+        Deny from all
+        Allow from 127.0.0.0/255.0.0.0 ::1/128
+    </Directory>
+
+</VirtualHost>

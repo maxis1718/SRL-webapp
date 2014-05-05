@@ -11,11 +11,6 @@ if __name__ == '__main__':
 	import socket
 	import sys
 
-	if len(sys.argv) == 2:
-		PORT = int(sys.argv[2].strip())
-	else:
-		PORT = 9999
-
 	print '<!DOCTYPE><html>'
 	print '<head>'
 	print '''<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta http-equiv="cache-control" content="no-cache"><meta http-equiv="pragma" content="no-cache"><meta http-equiv="expires" content="0">'''
